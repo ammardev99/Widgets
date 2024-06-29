@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:widgets/modules/widget_app.dart';
+import 'package:widgets/routes/routes.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFE9F2FF)),
         useMaterial3: true,
       ),
+      getPages: AppRoutes.appRoutes(),
       home: AnimatedSplashScreen(
           duration: 2000,
           splashTransition: SplashTransition.fadeTransition,
@@ -35,25 +38,7 @@ class MyApp extends StatelessWidget {
             semanticsLabel: 'Widgets',
             height: 100,
           ),
-          nextScreen: const MyHomePage(title: '')),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("data")),
+          nextScreen: const WidgetApp()),
     );
   }
 }
