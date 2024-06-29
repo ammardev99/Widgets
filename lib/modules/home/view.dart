@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
+      physics: const BouncingScrollPhysics(),
       child: // Grid card
           Padding(
         padding: const EdgeInsets.all(20),

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:widgets/routes/routes_name.dart';
 import 'package:widgets/widgets/formating.dart';
 
 // GridCard
-Widget technologyGridCard(String label, Color color ) {
+Widget technologyGridCard(String label, Color color) {
   return InkWell(
-    onTap: () {},
+    onTap: () {
+      Get.toNamed(RouteName.collection);
+    },
     splashColor: color.withOpacity(0.1),
     borderRadius: BorderRadius.circular(15),
     child: Container(
@@ -13,7 +17,7 @@ Widget technologyGridCard(String label, Color color ) {
       width: 170,
       height: 200,
       decoration: BoxDecoration(
-        color:  color.withOpacity(0.1),
+        color: color.withOpacity(0.1),
         border: Border.all(
           width: 1,
           color: color.withOpacity(0.3),
@@ -33,7 +37,7 @@ Widget technologyGridCard(String label, Color color ) {
           const SizedBox(
             height: 15,
           ),
-            customHeading(label),
+          customHeading(label),
         ],
       ),
     ),
