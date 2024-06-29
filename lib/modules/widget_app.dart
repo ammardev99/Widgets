@@ -71,7 +71,7 @@ class _WidgetAppState extends State<WidgetApp> {
                   ),
                   activeItem: Icon(
                     Icons.home_filled,
-                    color: AppColors.blue,
+                    color: AppColors.primary,
                   ),
                   itemLabel: 'Home',
                 ),
@@ -82,7 +82,7 @@ class _WidgetAppState extends State<WidgetApp> {
                   ),
                   activeItem: Icon(
                     Icons.newspaper,
-                    color: AppColors.blue,
+                    color: AppColors.primary,
                   ),
                   itemLabel: 'Updates',
                 ),
@@ -93,7 +93,7 @@ class _WidgetAppState extends State<WidgetApp> {
                   ),
                   activeItem: Icon(
                     Icons.favorite,
-                    color: AppColors.blue,
+                    color: AppColors.primary,
                   ),
                   itemLabel: 'Favorite',
                 ),
@@ -104,7 +104,7 @@ class _WidgetAppState extends State<WidgetApp> {
                   ),
                   activeItem: Icon(
                     Icons.menu,
-                    color: AppColors.blue,
+                    color: AppColors.primary,
                   ),
                   itemLabel: 'Menu',
                 ),
