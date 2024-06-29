@@ -6,6 +6,7 @@ import 'package:widgets/modules/favorite/view.dart';
 import 'package:widgets/modules/home/view.dart';
 import 'package:widgets/modules/menu/view.dart';
 import 'package:widgets/modules/updates/view.dart';
+import 'package:widgets/utilities/color.dart';
 
 class WidgetApp extends StatefulWidget {
   const WidgetApp({super.key});
@@ -36,8 +37,8 @@ class _WidgetAppState extends State<WidgetApp> {
     /// widget list
     final List<Widget> bottomBarPages = [
       HomePage(),
-      UpdatesPage(), 
-      FavoritePage(), 
+      UpdatesPage(),
+      FavoritePage(),
       MenuPage(),
     ];
     return Scaffold(
@@ -55,7 +56,7 @@ class _WidgetAppState extends State<WidgetApp> {
               showLabel: true,
               textOverflow: TextOverflow.visible,
               maxLine: 1,
-              notchColor: Colors.white,
+              notchColor: AppColors.white,
               kIconSize: 24,
               kBottomRadius: 15,
               shadowElevation: 2,
@@ -66,44 +67,44 @@ class _WidgetAppState extends State<WidgetApp> {
                 BottomBarItem(
                   inActiveItem: Icon(
                     Icons.home,
-                    color: Colors.blueGrey,
+                    color: AppColors.grey,
                   ),
                   activeItem: Icon(
                     Icons.home_filled,
-                    color: Colors.blueAccent,
+                    color: AppColors.blue,
                   ),
                   itemLabel: 'Home',
                 ),
                 BottomBarItem(
                   inActiveItem: Icon(
                     Icons.newspaper,
-                    color: Colors.blueGrey,
+                    color: AppColors.grey,
                   ),
                   activeItem: Icon(
                     Icons.newspaper,
-                    color: Colors.blueAccent,
+                    color: AppColors.blue,
                   ),
                   itemLabel: 'Updates',
                 ),
                 BottomBarItem(
                   inActiveItem: Icon(
                     Icons.favorite,
-                    color: Colors.blueGrey,
+                    color: AppColors.grey,
                   ),
                   activeItem: Icon(
                     Icons.favorite,
-                    color: Colors.blueAccent,
+                    color: AppColors.blue,
                   ),
                   itemLabel: 'Favorite',
                 ),
                 BottomBarItem(
                   inActiveItem: Icon(
                     Icons.menu,
-                    color: Colors.blueGrey,
+                    color: AppColors.grey,
                   ),
                   activeItem: Icon(
                     Icons.menu,
-                    color: Colors.blueAccent,
+                    color: AppColors.blue,
                   ),
                   itemLabel: 'Menu',
                 ),
