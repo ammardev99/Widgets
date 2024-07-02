@@ -3,12 +3,9 @@ import 'package:get/get.dart';
 import 'state.dart';
 
 class HomeLogic extends GetxController {
-  bool layoutGrid = true;
+  RxBool layoutGrid = true.obs;
   void changeLayOut() {
-    layoutGrid = !layoutGrid;
-    update();
-    // ignore: avoid_print
-    print(layoutGrid);
+    layoutGrid.value = !layoutGrid.value;
   }
 
   final HomeState state = HomeState();

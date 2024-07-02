@@ -23,8 +23,14 @@ class WidgetInfoPage extends StatelessWidget {
           leading: backPop(),
           title: customHeading(collection[Get.arguments].title),
           actions: [
-            IconButton(
-                onPressed: () {}, icon: const Icon(Icons.favorite_border)),
+            Obx(() {
+              return IconButton(
+                  onPressed: () => logic.changeFav(),
+                  icon: logic.favoriteWidget.value == true
+                      ? const Icon(Icons.favorite, color: AppColors.red)
+                      : const Icon(Icons.favorite_border,
+                          color: AppColors.grey));
+            }),
             sizeBox(5),
           ],
           bottom: const TabBar(

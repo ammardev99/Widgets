@@ -22,44 +22,50 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               sizeBox(20),
-              technologyListCard(myTechonology[0]),
+              technologyListCard(myTechonology[5]),
               sizeBox(10),
               // layout option
-              ListTile(
-                contentPadding: const EdgeInsets.all(0),
-                title: customHeading("Technologies"),
-                trailing: IconButton(
-                    onPressed: () => logic.changeLayOut(),
-                    icon: logic.layoutGrid == true
-                        ? const Icon(Icons.list, color: AppColors.grey)
-                        : const Icon(Icons.grid_view, color: AppColors.grey)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  customHeading("Technologies"),
+                  Obx(() {
+                    return IconButton(
+                        onPressed: () => logic.changeLayOut(),
+                        icon: logic.layoutGrid.value == true
+                            ? const Icon(Icons.line_weight_sharp, color: AppColors.grey)
+                            : const Icon(Icons.grid_view,
+                                color: AppColors.grey));
+                  }),
+                ],
               ),
-              sizeBox(10),
-              logic.layoutGrid == true
-                  ? GridView.builder(
-                      itemCount: myTechonology.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        mainAxisExtent: 170,
-                        crossAxisSpacing: 15,
-                        mainAxisSpacing: 15,
-                      ),
-                      itemBuilder: (context, index) =>
-                          technologyGridCard(myTechonology[index]),
-                    )
-                  : ListView.builder(
-                    itemCount: myTechonology.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) =>
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 6),
-                            child: technologyListCard(myTechonology[index]),
-                          ),
-                    ),
+              sizeBox(3),
+              Obx(() {
+                return logic.layoutGrid.value == true
+                    ? GridView.builder(
+                        itemCount: myTechonology.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 200,
+                          mainAxisExtent: 170,
+                          crossAxisSpacing: 15,
+                          mainAxisSpacing: 15,
+                        ),
+                        itemBuilder: (context, index) =>
+                            technologyGridCard(myTechonology[index]),
+                      )
+                    : ListView.builder(
+                        itemCount: myTechonology.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          child: technologyListCard(myTechonology[index]),
+                        ),
+                      );
+              }),
             ],
           ),
         ),
