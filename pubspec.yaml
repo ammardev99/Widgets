@@ -71,6 +71,8 @@ flutter:
   assets:
     - assets/png/
     - assets/svg/
+    - assets/png/navbar/
+    - assets/png/technologies/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

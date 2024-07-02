@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:widgets/models/dummy.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/widgets/formating.dart';
 
-Widget componentCard(String title, bool favorite, [String? widgetsInfo]) {
+Widget componentCard(MyWidget widget, [String? widgetsInfo]) {
   return // widget card
       Container(
     margin: const EdgeInsets.symmetric(vertical: 3),
     child: InkWell(
       onTap: () {
         if (widgetsInfo != null) {
-          Get.toNamed(widgetsInfo);
-        }
-      },
+          Get.toNamed(widgetsInfo, arguments: widget.id);
+        }},
       borderRadius: BorderRadius.circular(10),
       child: Container(
           padding: const EdgeInsets.only(right: 10, bottom: 10, left: 10),
@@ -29,14 +29,14 @@ Widget componentCard(String title, bool favorite, [String? widgetsInfo]) {
             children: [
               ListTile(
                   contentPadding: const EdgeInsets.all(0),
-                  title: customHeading(title),
+                  title: customHeading(widget.title),
                   trailing: IconButton(
                     onPressed: () {
-                      favorite = !favorite;
+                      widget.favorite = !widget.favorite;
                       // ignore: avoid_print
-                      print(favorite);
+                      print(widget.favorite);
                     },
-                    icon: favorite == true
+                    icon: widget.favorite == true
                         ? const Icon(
                             Icons.favorite,
                             color: AppColors.red,
@@ -45,7 +45,7 @@ Widget componentCard(String title, bool favorite, [String? widgetsInfo]) {
                   )),
               const Divider(),
               Image.asset(
-                'assets/png/app_icon.png',
+                widget.img,
                 fit: BoxFit.contain,
               ),
             ],

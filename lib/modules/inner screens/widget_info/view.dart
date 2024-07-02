@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:widgets/models/dummy.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/widgets/back_icon_button.dart';
 import 'package:widgets/widgets/formating.dart';
@@ -19,7 +21,7 @@ class WidgetInfoPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: backPop(),
-          title: customHeading('Widget info'),
+          title: customHeading(collection[Get.arguments].title),
           actions: [
             IconButton(
                 onPressed: () {}, icon: const Icon(Icons.favorite_border)),
@@ -47,21 +49,29 @@ class WidgetInfoPage extends StatelessWidget {
           child: TabBarView(
             physics: const BouncingScrollPhysics(),
             children: [
-              const Center(
-                  child: Image(
-                    image: AssetImage('assets/png/app_icon.png'),
-                    fit: BoxFit.contain,
-                  )),
+              Image(
+                image: AssetImage(collection[Get.arguments].img),
+                fit: BoxFit.contain,
+              ),
               Center(
                 child: SingleChildScrollView(
-                    child: customInfo(
-                        "code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  1231123 123123  ")),
+                    child:
+                        customInfo(collection[Get.arguments].code.toString())),
               ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Clipboard.setData(
+                ClipboardData(text: collection[Get.arguments].code));
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                  backgroundColor: AppColors.splashColor,
+                  content: customInfo(
+                      'Code copied to clipboard!', AppColors.primary)),
+            );
+          },
           backgroundColor: AppColors.primary,
           child: const Icon(
             Icons.copy,

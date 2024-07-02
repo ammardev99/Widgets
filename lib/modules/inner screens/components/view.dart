@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:widgets/models/dummy.dart';
 import 'package:widgets/routes/routes_name.dart';
 import 'package:widgets/widgets/back_icon_button.dart';
 import 'package:widgets/widgets/component_cart.dart';
@@ -27,12 +28,15 @@ class ComponentsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            technologyListCard('Components', Colors.blue),
+            technologyListCard(myTechonology[Get.arguments]),
             sizeBox(20),
-            componentCard('First', true, RouteName.widgetsInfo),
-            componentCard('Second', false, RouteName.widgetsInfo),
-            componentCard('3rd', false, RouteName.widgetsInfo),
-            componentCard('Last', true, RouteName.widgetsInfo),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: collection.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  componentCard(collection[index], RouteName.widgetsInfo),
+            ),
           ],
         ),
       ),

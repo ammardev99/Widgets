@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:widgets/models/dummy.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/widgets/formating.dart';
 import 'package:widgets/widgets/technology_card.dart';
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               sizeBox(20),
-              technologyListCard('Flutter', AppColors.red),
+              technologyListCard(myTechonology[0]),
               sizeBox(10),
               // layout option
               ListTile(
@@ -30,26 +31,35 @@ class HomePage extends StatelessWidget {
                 trailing: IconButton(
                     onPressed: () => logic.changeLayOut(),
                     icon: logic.layoutGrid == true
-                        ? const Icon(Icons.grid_view, color: AppColors.grey)
-                        : const Icon(Icons.list, color: AppColors.grey)),
+                        ? const Icon(Icons.list, color: AppColors.grey)
+                        : const Icon(Icons.grid_view, color: AppColors.grey)),
               ),
               sizeBox(10),
-              GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 10,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  technologyGridCard('Name A', Colors.red),
-                  technologyGridCard('Name B', Colors.black),
-                  technologyGridCard('Name C', Colors.green),
-                  technologyGridCard('Name D', Colors.yellow),
-                  technologyGridCard('Name E', Colors.pink),
-                  technologyGridCard('Name F', Colors.teal),
-                  technologyGridCard('Name G', Colors.deepOrangeAccent),
-                ],
-              ),
+              logic.layoutGrid == true
+                  ? GridView.builder(
+                      itemCount: myTechonology.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 200,
+                        mainAxisExtent: 170,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                      ),
+                      itemBuilder: (context, index) =>
+                          technologyGridCard(myTechonology[index]),
+                    )
+                  : ListView.builder(
+                    itemCount: myTechonology.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) =>
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 6),
+                            child: technologyListCard(myTechonology[index]),
+                          ),
+                    ),
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:widgets/models/dummy.dart';
 import 'package:widgets/routes/routes_name.dart';
 import 'package:widgets/widgets/back_icon_button.dart';
 import 'package:widgets/widgets/collection_card.dart';
@@ -27,14 +28,14 @@ class CollectionPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            technologyListCard('Collection', Colors.blue),
+            technologyListCard(myTechonology[Get.arguments]),
             sizeBox(20),
-            collectionCard('App Bar', 235, RouteName.components),
-            collectionCard('Buttons', 561, RouteName.components),
-            collectionCard('Inputs', 512, RouteName.components),
-            collectionCard('Sliders', 123, RouteName.components),
-            collectionCard('Cards', 32, RouteName.components),
-            collectionCard('Bottom Bar', 135, RouteName.components),
+            collectionCard('App Bar', 235,Get.arguments, RouteName.components, ),
+            collectionCard('Buttons', 561,Get.arguments, RouteName.components, ),
+            collectionCard('Inputs', 512, Get.arguments,RouteName.components, ),
+            collectionCard('Sliders', 123,Get.arguments, RouteName.components, ),
+            collectionCard('Cards', 32, Get.arguments,RouteName.components, ),
+            collectionCard('Bottom Bar', 135, Get.arguments,RouteName.components, ),
           ],
         ),
       ),
