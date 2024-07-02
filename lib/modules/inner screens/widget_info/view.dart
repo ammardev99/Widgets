@@ -14,39 +14,60 @@ class WidgetInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: backPop(),
-        title: customHeading('Collection Name'),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.favorite_border,
-                color: AppColors.grey,
-              ))
-        ],
-      ),
-      body: const SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // ui view card
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: backPop(),
+          title: customHeading('Widget info'),
+          actions: [
+            IconButton(
+                onPressed: () {}, icon: const Icon(Icons.favorite_border)),
+            sizeBox(5),
           ],
+          bottom: const TabBar(
+            automaticIndicatorColorAdjustment: true,
+            indicatorColor: AppColors.primary,
+            dividerColor: AppColors.grey,
+            physics: BouncingScrollPhysics(),
+            tabs: [
+              Tab(
+                text: 'Image',
+                // icon: Icon(Icons.image),
+              ),
+              Tab(
+                text: 'Code',
+                // icon: Icon(Icons.code),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: IconButton(
-        style: const ButtonStyle(
-          backgroundColor: WidgetStatePropertyAll(AppColors.primary),
+        body: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
+          child: TabBarView(
+            physics: const BouncingScrollPhysics(),
+            children: [
+              const Center(
+                  child: Image(
+                    image: AssetImage('assets/png/app_icon.png'),
+                    fit: BoxFit.contain,
+                  )),
+              Center(
+                child: SingleChildScrollView(
+                    child: customInfo(
+                        "code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  code code code 122 12 21 1231123 123123  1231123 123123  ")),
+              ),
+            ],
+          ),
         ),
-        onPressed: () {},
-        icon: const Icon(
-          Icons.copy,
-          size: 20,
-          color: AppColors.white,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: AppColors.primary,
+          child: const Icon(
+            Icons.copy,
+            size: 20,
+            color: AppColors.white,
+          ),
         ),
       ),
     );
