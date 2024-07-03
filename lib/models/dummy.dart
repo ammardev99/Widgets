@@ -1,11 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:widgets/utilities/color.dart';
 
 class MyWidget {
   int id;
   String title;
-  bool favorite;
+  RxBool favorite;
   String img;
   String code;
   MyWidget({
@@ -19,10 +20,14 @@ class MyWidget {
 
 
 final collection  = [
-  MyWidget(id: 0,title: "New App Bar", favorite: true, img: "assets/png/navbar/navbar1.png", code: 'New App Bar Code 1 componentCard( collection[1],RouteName.widgetsInfo),'),
-  MyWidget(id: 1,title: "GitHub App Bar", favorite: true, img: "assets/png/navbar/navbar2.png", code: 'GitHub bar 2 componentCard( collection[2],RouteName.widgetsInfo),'),
-  MyWidget(id: 2,title: "Conversation Bar", favorite: true, img: "assets/png/navbar/navbar3.png", code: 'Conversation Bar code 3 componentCard( collection[3],RouteName.widgetsInfo),'),
-  MyWidget(id: 3,title: "Purple App Bar", favorite: false, img: "assets/png/navbar/navbar4.png", code: 'Purple Bar Code4 componentCard( collection[4],RouteName.widgetsInfo),'),
+  MyWidget(id: 0,title: "New App Bar", favorite: true.obs, img: "assets/png/navbar/navbar1.png", code: 'New App Bar Code 1 componentCard( collection[1],RouteName.widgetsInfo),'),
+  MyWidget(id: 1,title: "GitHub App Bar", favorite: true.obs, img: "assets/png/navbar/navbar2.png", code: 'GitHub bar 2 componentCard( collection[2],RouteName.widgetsInfo),'),
+  MyWidget(id: 2,title: "Conversation Bar", favorite: true.obs, img: "assets/png/navbar/navbar3.png", code: 'Conversation Bar code 3 componentCard( collection[3],RouteName.widgetsInfo),'),
+  MyWidget(id: 3,title: "Purple App Bar", favorite: true.obs, img: "assets/png/navbar/navbar4.png", code: 'Purple Bar Code4 componentCard( collection[4],RouteName.widgetsInfo),'),
+  MyWidget(id: 4,title: "New App Bar", favorite: true.obs, img: "assets/png/navbar/navbar1.png", code: 'New App Bar Code 1 componentCard( collection[1],RouteName.widgetsInfo),'),
+  MyWidget(id: 5,title: "GitHub App Bar", favorite: true.obs, img: "assets/png/navbar/navbar2.png", code: 'GitHub bar 2 componentCard( collection[2],RouteName.widgetsInfo),'),
+  MyWidget(id: 6,title: "Conversation Bar", favorite: true.obs, img: "assets/png/navbar/navbar3.png", code: 'Conversation Bar code 3 componentCard( collection[3],RouteName.widgetsInfo),'),
+  MyWidget(id: 7,title: "Purple App Bar", favorite: true.obs, img: "assets/png/navbar/navbar4.png", code: 'Purple Bar Code4 componentCard( collection[4],RouteName.widgetsInfo),'),
 ];
 
 

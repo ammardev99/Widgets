@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:widgets/models/dummy.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/widgets/back_icon_button.dart';
+import 'package:widgets/widgets/copy_it.dart';
 import 'package:widgets/widgets/formating.dart';
+import 'package:widgets/widgets/show_snack_bar.dart';
 
 import 'logic.dart';
 
@@ -23,21 +24,23 @@ class WidgetInfoPage extends StatelessWidget {
           leading: backPop(),
           title: customHeading(collection[Get.arguments].title),
           actions: [
-            Obx(() {
-              return IconButton(
-                  onPressed: () => logic.changeFav(),
-                  icon: logic.favoriteWidget.value == true
-                      ? const Icon(Icons.favorite, color: AppColors.red)
-                      : const Icon(Icons.favorite_border,
-                          color: AppColors.grey));
-            }),
+            IconButton(onPressed: () {
+              collection[Get.arguments].favorite.value =
+                  !collection[Get.arguments].favorite.value;
+            }, icon: Obx(() {
+              return collection[Get.arguments].favorite.value == true
+                  ? const Icon(
+                      Icons.favorite,
+                      color: AppColors.red,
+                    )
+                  : const Icon(Icons.favorite_border);
+            })),
             sizeBox(5),
           ],
           bottom: const TabBar(
-            automaticIndicatorColorAdjustment: true,
             indicatorColor: AppColors.primary,
             dividerColor: AppColors.grey,
-            physics: BouncingScrollPhysics(),
+            labelColor: AppColors.primary,
             tabs: [
               Tab(
                 text: 'Image',
@@ -59,24 +62,15 @@ class WidgetInfoPage extends StatelessWidget {
                 image: AssetImage(collection[Get.arguments].img),
                 fit: BoxFit.contain,
               ),
-              Center(
-                child: SingleChildScrollView(
-                    child:
-                        customInfo(collection[Get.arguments].code.toString())),
-              ),
+              SingleChildScrollView(
+                  child: customInfo(collection[Get.arguments].code.toString())),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Clipboard.setData(
-                ClipboardData(text: collection[Get.arguments].code));
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                  backgroundColor: AppColors.splashColor,
-                  content: customInfo(
-                      'Code copied to clipboard!', AppColors.primary)),
-            );
+            copyIt(collection[Get.arguments].code);
+            showSnackBar("Copy", collection[Get.arguments].title);
           },
           backgroundColor: AppColors.primary,
           child: const Icon(

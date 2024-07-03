@@ -10,7 +10,7 @@ Widget technologyGridCard(Mytechnology object) {
     onTap: () {
       Get.toNamed(RouteName.collection, arguments: object.id);
     },
-    splashColor: object.color.withOpacity(0.1),
+    splashColor: object.color.withOpacity(0.3),
     borderRadius: BorderRadius.circular(15),
     child: Container(
       padding: const EdgeInsets.all(10),
@@ -18,24 +18,14 @@ Widget technologyGridCard(Mytechnology object) {
       height: 200,
       decoration: BoxDecoration(
         color: object.color.withOpacity(0.1),
-        border: Border.all(
-          width: 1,
-          color: object.color.withOpacity(0.3),
-        ),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(
             height: 80,
             child: Image.asset(object.icon),
-            // child: SvgPicture.asset(object.icon,
-            //   fit: BoxFit.contain,
-            // ),
-          ),
-          const SizedBox(
-            height: 15,
           ),
           customHeading(object.title),
         ],
@@ -58,10 +48,6 @@ Widget technologyListCard(Mytechnology object) {
         height: 120,
         decoration: BoxDecoration(
           color: object.color.withOpacity(0.1),
-          border: Border.all(
-            color: object.color.withOpacity(0.3),
-            width: 1,
-          ),
           borderRadius: BorderRadius.circular(10),
           //background light image
           image: DecorationImage(
@@ -75,7 +61,7 @@ Widget technologyListCard(Mytechnology object) {
           children: [
             customHeading(object.title),
             CircleAvatar(
-              maxRadius: 39,
+              maxRadius: 40,
               backgroundColor: Colors.white,
               foregroundImage: AssetImage(object.icon),
             )

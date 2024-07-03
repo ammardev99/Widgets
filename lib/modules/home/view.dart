@@ -33,9 +33,10 @@ class HomePage extends StatelessWidget {
                     return IconButton(
                         onPressed: () => logic.changeLayOut(),
                         icon: logic.layoutGrid.value == true
-                            ? const Icon(Icons.line_weight_sharp, color: AppColors.grey)
-                            : const Icon(Icons.grid_view,
-                                color: AppColors.grey));
+                            ? Icon(Icons.view_list_rounded,
+                                color: AppColors.grey.withOpacity(0.6))
+                            : Icon(Icons.grid_view_rounded,
+                                color: AppColors.grey.withOpacity(0.6)));
                   }),
                 ],
               ),
@@ -48,22 +49,27 @@ class HomePage extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 200,
-                          mainAxisExtent: 170,
-                          crossAxisSpacing: 15,
-                          mainAxisSpacing: 15,
+                          maxCrossAxisExtent: 250,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
                         ),
                         itemBuilder: (context, index) =>
                             technologyGridCard(myTechonology[index]),
                       )
-                    : ListView.builder(
+                    : GridView.builder(
                         itemCount: myTechonology.length,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 6),
-                          child: technologyListCard(myTechonology[index]),
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 540,
+                          mainAxisExtent: 120,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          childAspectRatio: 1.0,
                         ),
+                        itemBuilder: (context, index) =>
+                            technologyListCard(myTechonology[index]),
                       );
               }),
             ],

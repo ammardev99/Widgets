@@ -7,25 +7,20 @@ import 'package:widgets/widgets/formating.dart';
 Widget collectionCard(String title, int count, int i,
     [String? componentsPage]) {
   return Container(
-    margin: const EdgeInsets.symmetric(vertical: 3),
+    margin: const EdgeInsets.symmetric(vertical: 4),
     child: InkWell(
+      splashColor: AppColors.splashColor,
+      highlightColor: Colors.transparent,
+      hoverColor: Colors.transparent,
       onTap: () {
         if (componentsPage != null) {
           Get.toNamed(componentsPage, arguments: i);
         }
       },
-      splashColor: AppColors.primaryLight,
-      highlightColor: Colors.transparent,
-      hoverColor: Colors.transparent,
       borderRadius: BorderRadius.circular(5),
       child: Container(
-          width: 340,
           decoration: BoxDecoration(
-            color: AppColors.primaryLight,
-            border: Border.all(
-              color: AppColors.grey,
-              width: 1,
-            ),
+            color: AppColors.grey.withOpacity(0.1),
             borderRadius: BorderRadius.circular(5),
           ),
           child: Center(

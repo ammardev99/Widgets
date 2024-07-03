@@ -41,80 +41,79 @@ class _WidgetAppState extends State<WidgetApp> {
       FavoritePage(),
       MenuPage(),
     ];
-    return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: List.generate(
-            bottomBarPages.length, (index) => bottomBarPages[index]),
+    return SafeArea(
+      child: Scaffold(
+        body: PageView(
+          controller: _pageController,
+          physics: const NeverScrollableScrollPhysics(),
+          children: List.generate(
+              bottomBarPages.length, (index) => bottomBarPages[index]),
+        ),
+        extendBody: true,
+        bottomNavigationBar: (bottomBarPages.length <= maxCount)
+            ? AnimatedNotchBottomBar(
+                notchBottomBarController: _controller,
+                kIconSize: 24,
+                kBottomRadius: 0,
+                removeMargins: true,
+                showShadow: true,
+                shadowElevation: 0.3,
+                durationInMilliSeconds: 300,
+                showLabel: false,
+                itemLabelStyle: const TextStyle(fontSize: 10),
+                bottomBarItems: const [
+                  BottomBarItem(
+                    inActiveItem: Icon(
+                      Icons.home,
+                      color: AppColors.grey,
+                    ),
+                    activeItem: Icon(
+                      Icons.home_filled,
+                      color: AppColors.primary,
+                    ),
+                    itemLabel: 'Home',
+                  ),
+                  BottomBarItem(
+                    inActiveItem: Icon(
+                      Icons.newspaper,
+                      color: AppColors.grey,
+                    ),
+                    activeItem: Icon(
+                      Icons.newspaper,
+                      color: AppColors.primary,
+                    ),
+                    itemLabel: 'Updates',
+                  ),
+                  BottomBarItem(
+                    inActiveItem: Icon(
+                      Icons.favorite,
+                      color: AppColors.grey,
+                    ),
+                    activeItem: Icon(
+                      Icons.favorite,
+                      color: AppColors.primary,
+                    ),
+                    itemLabel: 'Favorite',
+                  ),
+                  BottomBarItem(
+                    inActiveItem: Icon(
+                      Icons.menu,
+                      color: AppColors.grey,
+                    ),
+                    activeItem: Icon(
+                      Icons.menu,
+                      color: AppColors.primary,
+                    ),
+                    itemLabel: 'Menu',
+                  ),
+                ],
+                onTap: (index) {
+                  log('current selected index $index');
+                  _pageController.jumpToPage(index);
+                },
+              )
+            : null,
       ),
-      extendBody: true,
-      bottomNavigationBar: (bottomBarPages.length <= maxCount)
-          ? AnimatedNotchBottomBar(
-              /// Provide NotchBottomBarController
-              notchBottomBarController: _controller,
-              showLabel: true,
-              textOverflow: TextOverflow.visible,
-              maxLine: 1,
-              notchColor: AppColors.white,
-              kIconSize: 24,
-              kBottomRadius: 15,
-              shadowElevation: 2,
-              durationInMilliSeconds: 300,
-              itemLabelStyle: const TextStyle(fontSize: 10),
-              elevation: 1,
-              bottomBarItems: const [
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.home,
-                    color: AppColors.grey,
-                  ),
-                  activeItem: Icon(
-                    Icons.home_filled,
-                    color: AppColors.primary,
-                  ),
-                  itemLabel: 'Home',
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.newspaper,
-                    color: AppColors.grey,
-                  ),
-                  activeItem: Icon(
-                    Icons.newspaper,
-                    color: AppColors.primary,
-                  ),
-                  itemLabel: 'Updates',
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.favorite,
-                    color: AppColors.grey,
-                  ),
-                  activeItem: Icon(
-                    Icons.favorite,
-                    color: AppColors.primary,
-                  ),
-                  itemLabel: 'Favorite',
-                ),
-                BottomBarItem(
-                  inActiveItem: Icon(
-                    Icons.menu,
-                    color: AppColors.grey,
-                  ),
-                  activeItem: Icon(
-                    Icons.menu,
-                    color: AppColors.primary,
-                  ),
-                  itemLabel: 'Menu',
-                ),
-              ],
-              onTap: (index) {
-                log('current selected index $index');
-                _pageController.jumpToPage(index);
-              },
-            )
-          : null,
     );
   }
 }
