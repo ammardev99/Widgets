@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:widgets/models/dummy.dart';
 import 'package:widgets/routes/routes_name.dart';
+import 'package:widgets/utilities/color.dart';
 import 'package:widgets/widgets/component_cart.dart';
 
 import 'logic.dart';
@@ -31,8 +32,8 @@ class FavoritePage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   var filteredCollection =
                       collection.where((item) => item.favorite.value).toList();
-                  return componentCard(
-                      filteredCollection[index], RouteName.widgetsInfo);
+                  return componentCard(filteredCollection[index],
+                      AppColors.light, RouteName.widgetsInfo);
                 },
               );
             })

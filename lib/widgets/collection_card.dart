@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:widgets/utilities/color.dart';
 import 'package:widgets/widgets/formating.dart';
 
 // collection card
-Widget collectionCard(String title, int count, int i,
+Widget collectionCard(String title, int count, int i, Color color,
     [String? componentsPage]) {
   return Container(
     margin: const EdgeInsets.symmetric(vertical: 4),
     child: InkWell(
-      splashColor: AppColors.splashColor,
+      splashColor: color.withOpacity(0.3),
       highlightColor: Colors.transparent,
       hoverColor: Colors.transparent,
       onTap: () {
@@ -20,7 +19,7 @@ Widget collectionCard(String title, int count, int i,
       borderRadius: BorderRadius.circular(5),
       child: Container(
           decoration: BoxDecoration(
-            color: AppColors.grey.withOpacity(0.1),
+            color: color.withOpacity(0.1),
             borderRadius: BorderRadius.circular(5),
           ),
           child: Center(

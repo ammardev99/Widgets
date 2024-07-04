@@ -35,7 +35,7 @@ class ComponentsPage extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: collection.length,
               itemBuilder: (BuildContext context, int index) =>
-                  componentCard(collection[index], RouteName.widgetsInfo),
+                  componentCard(collection[index],myTechonology[Get.arguments].color,RouteName.widgetsInfo),
             ),
           ],
         ),
