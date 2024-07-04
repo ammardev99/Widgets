@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:widgets/modules/widget_app.dart';
+import 'package:widgets/modules/auth/login/view.dart';
 import 'package:widgets/routes/routes.dart';
+import 'package:widgets/utilities/color.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Color(0xFFE9F2FF),
+  SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(
+    statusBarColor: AppColors.splashColor,
     statusBarBrightness: Brightness.light,
   ));
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Widgets App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFFE9F2FF)),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.splashColor),
         useMaterial3: true,
       ),
       getPages: AppRoutes.appRoutes(),
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
             semanticsLabel: 'Widgets',
             height: 100,
           ),
-          nextScreen: const WidgetApp()),
+          nextScreen: LoginPage()),
     );
   }
 }

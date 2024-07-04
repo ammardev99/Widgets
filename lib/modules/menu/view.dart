@@ -28,7 +28,7 @@ class MenuPage extends StatelessWidget {
           optionCard(Icons.info_outline, 'About us', RouteName.aboutus),
           optionCard(Icons.message_outlined, 'Contact us', RouteName.contactus),
           optionCard(Icons.star_border, 'Rate App'),
-          optionCard(Icons.logout, 'Log out'),
+          optionCard(Icons.logout, 'Log out',RouteName.login),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/widgets/formating.dart';
+import 'package:widgets/widgets/show_snack_bar.dart';
 
 // Option card
 Widget optionCard(IconData icon, String label, [String? page]) {
@@ -10,7 +11,13 @@ Widget optionCard(IconData icon, String label, [String? page]) {
     child: InkWell(
       onTap: () {
         if (page != null) {
-          Get.toNamed(page);
+          if(page == '/login'){
+                      Get.offAllNamed(page);
+                      showSnackBar('Log out', 'succefully');
+          }
+          else {
+                      Get.toNamed(page);
+          }
         }
       },
       splashColor: AppColors.splashColor,

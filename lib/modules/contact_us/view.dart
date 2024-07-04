@@ -11,7 +11,9 @@ class ContactUsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(), body: const Center(child: Text('Contact us')));
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(), body: const Center(child: Text('Contact us'))),
+    );
   }
 }

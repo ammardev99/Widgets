@@ -26,7 +26,7 @@ class InputFormFieldApp extends StatelessWidget {
         children: [
           customHeading(label),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           TextFormField(
             controller: controller,

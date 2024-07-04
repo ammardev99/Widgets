@@ -17,27 +17,29 @@ class ComponentsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: backPop(),
-      ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            technologyListCard(myTechonology[Get.arguments]),
-            sizeBox(20),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: collection.length,
-              itemBuilder: (BuildContext context, int index) =>
-                  componentCard(collection[index],myTechonology[Get.arguments].color,RouteName.widgetsInfo),
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          leading: backPop(),
+        ),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              technologyListCard(myTechonology[Get.arguments]),
+              sizeBox(20),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: collection.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    componentCard(collection[index],myTechonology[Get.arguments].color,RouteName.widgetsInfo),
+              ),
+            ],
+          ),
         ),
       ),
     );

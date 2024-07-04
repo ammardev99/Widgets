@@ -19,64 +19,67 @@ class WidgetInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          leading: backPop(),
-          title: customHeading(collection[Get.arguments].title),
-          actions: [
-            IconButton(onPressed: () {
-              collection[Get.arguments].favorite.value =
-                  !collection[Get.arguments].favorite.value;
-            }, icon: Obx(() {
-              return collection[Get.arguments].favorite.value == true
-                  ? const Icon(
-                      Icons.favorite,
-                      color: AppColors.red,
-                    )
-                  : const Icon(Icons.favorite_border);
-            })),
-            sizeBox(5),
-          ],
-          bottom: const TabBar(
-            indicatorColor: AppColors.primary,
-            dividerColor: AppColors.grey,
-            labelColor: AppColors.primary,
-            tabs: [
-              Tab(
-                text: 'Image',
-                // icon: Icon(Icons.image),
-              ),
-              Tab(
-                text: 'Code',
-                // icon: Icon(Icons.code),
-              ),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            leading: backPop(),
+            title: customHeading(collection[Get.arguments].title),
+            actions: [
+              IconButton(onPressed: () {
+                collection[Get.arguments].favorite.value =
+                    !collection[Get.arguments].favorite.value;
+              }, icon: Obx(() {
+                return collection[Get.arguments].favorite.value == true
+                    ? const Icon(
+                        Icons.favorite,
+                        color: AppColors.red,
+                      )
+                    : const Icon(Icons.favorite_border);
+              })),
+              sizeBox(5),
             ],
+            bottom: const TabBar(
+              indicatorColor: AppColors.primary,
+              dividerColor: AppColors.grey,
+              labelColor: AppColors.primary,
+              tabs: [
+                Tab(
+                  text: 'Image',
+                  // icon: Icon(Icons.image),
+                ),
+                Tab(
+                  text: 'Code',
+                  // icon: Icon(Icons.code),
+                ),
+              ],
+            ),
           ),
-        ),
-        body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
-          child: TabBarView(
-            physics: const BouncingScrollPhysics(),
-            children: [
-              Image(
-                image: AssetImage(collection[Get.arguments].img),
-                fit: BoxFit.contain,
-              ),
-              SingleChildScrollView(
-                  child: customInfo(collection[Get.arguments].code.toString())),
-            ],
+          body: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
+            child: TabBarView(
+              physics: const BouncingScrollPhysics(),
+              children: [
+                Image(
+                  image: AssetImage(collection[Get.arguments].img),
+                  fit: BoxFit.contain,
+                ),
+                SingleChildScrollView(
+                    child:
+                        customInfo(collection[Get.arguments].code.toString())),
+              ],
+            ),
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            copyIt(collection[Get.arguments].code);
-            showSnackBar("Copy", collection[Get.arguments].title);
-          },
-          backgroundColor: AppColors.primary,
-          child: const Icon(
-            Icons.copy,
-            size: 20,
-            color: AppColors.white,
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              copyIt(collection[Get.arguments].code);
+              showSnackBar("Copy", collection[Get.arguments].title);
+            },
+            backgroundColor: AppColors.primary,
+            child: const Icon(
+              Icons.copy,
+              size: 20,
+              color: AppColors.white,
+            ),
           ),
         ),
       ),

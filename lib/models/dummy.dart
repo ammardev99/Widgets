@@ -51,7 +51,7 @@ final myTechonology = [
   Mytechnology(id: 2,title: "Github", icon: "assets/png/technologies/github.png", color: Colors.black),
   Mytechnology(id: 3,title: "Html", icon: "assets/png/technologies/html.png" , color: Colors.red),
   Mytechnology(id: 4,title: "name", icon: "assets/png/technologies/extensions.png", color: const Color.fromARGB(255, 122, 122, 122)),
-  Mytechnology(id: 5,title: "Widgets Collection", icon: "assets/png/app_icon.png", color: AppColors.black),
+  Mytechnology(id: 5,title: "Widgets", icon: "assets/png/app_icon.png", color: AppColors.black),
 ];
 
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:widgets/utilities/color.dart';
 
 Widget sizeBox(double w, [double? h]) {
@@ -30,6 +31,7 @@ Widget customHeading(String text, [Color? color]) {
     ),
   );
 }
+
 Widget customText(String text, [Color? color]) {
   return Text(
     text,
@@ -53,5 +55,15 @@ Widget customInfo(String text, [Color? color]) {
   );
 }
 
-
-
+Widget actionText(String text, String actionText, String page) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      customText(text),
+      sizeBox(5),
+      GestureDetector(
+          onTap: () => Get.toNamed(page),
+          child: customInfo(actionText, AppColors.primary)),
+    ],
+  );
+}
