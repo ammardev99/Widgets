@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:widgets/modules/about_us/view.dart';
+import 'package:widgets/modules/add%20data/add_widget/view.dart';
 import 'package:widgets/modules/contact_us/view.dart';
 import 'package:widgets/modules/inner%20screens/collection/view.dart';
 import 'package:widgets/modules/inner%20screens/components/view.dart';
@@ -13,5 +14,6 @@ class AppRoutes {
         GetPage(name: RouteName.collection, page: () => CollectionPage()),
         GetPage(name: RouteName.components, page: () => ComponentsPage()),
         GetPage(name: RouteName.widgetsInfo, page: () => WidgetInfoPage()),
+        GetPage(name: RouteName.addWidget, page: () => AddWidgetPage()),
       ];
 }

@@ -3,5 +3,6 @@ class RouteName {
   static const String contactus = '/contactus';
   static const String collection = '/collection';
   static const String components = '/components';
-  static const String widgetsInfo = '/widgetsInof';
+  static const String widgetsInfo = '/widgetsInfo';
+  static const String addWidget = '/addWidget';
 }
