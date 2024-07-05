@@ -4,6 +4,7 @@ import 'package:widgets/models/dummy.dart';
 import 'package:widgets/routes/routes_name.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/widgets/component_cart.dart';
+import 'package:widgets/widgets/formating.dart';
 
 import 'logic.dart';
 
@@ -16,6 +17,11 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.white,
+        title: customHeading('Bookmarks'),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         physics: const BouncingScrollPhysics(),
@@ -28,10 +34,10 @@ class FavoritePage extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount:
-                    collection.where((item) => item.favorite.value).length,
+                    widgets.where((item) => item.favorite.value).length,
                 itemBuilder: (BuildContext context, int index) {
                   var filteredCollection =
-                      collection.where((item) => item.favorite.value).toList();
+                      widgets.where((item) => item.favorite.value).toList();
                   return componentCard(filteredCollection[index],
                       AppColors.light, RouteName.widgetsInfo);
                 },

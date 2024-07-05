@@ -55,6 +55,18 @@ Widget customInfo(String text, [Color? color]) {
   );
 }
 
+Widget textSizeBold(String text, double size, bool bold, [Color? color]) {
+  return Text(
+    text,
+    style: TextStyle(
+      fontSize: size,
+      fontWeight: bold? FontWeight.bold : FontWeight.w500,
+      color: color ?? AppColors.grey,
+    ),
+    textAlign: TextAlign.justify,
+  );
+}
+
 Widget actionText(String text, String actionText, String page) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,

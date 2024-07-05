@@ -64,11 +64,11 @@ class _WidgetAppState extends State<WidgetApp> {
                 bottomBarItems: const [
                   BottomBarItem(
                     inActiveItem: Icon(
-                      Icons.home,
+                      Icons.home_outlined,
                       color: AppColors.grey,
                     ),
                     activeItem: Icon(
-                      Icons.home_filled,
+                      Icons.home_outlined,
                       color: AppColors.primary,
                     ),
                     itemLabel: 'Home',
@@ -86,11 +86,11 @@ class _WidgetAppState extends State<WidgetApp> {
                   ),
                   BottomBarItem(
                     inActiveItem: Icon(
-                      Icons.favorite,
+                      Icons.book_outlined,
                       color: AppColors.grey,
                     ),
                     activeItem: Icon(
-                      Icons.favorite,
+                      Icons.book_outlined,
                       color: AppColors.primary,
                     ),
                     itemLabel: 'Favorite',

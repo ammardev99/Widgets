@@ -27,21 +27,22 @@ Widget componentCard(MyWidget widget, Color color, [String? widgetsInfo]) {
           ),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  customHeading(widget.title),
-                  IconButton(onPressed: () {
-                    widget.favorite.value = !widget.favorite.value;
-                  }, icon: Obx(() {
-                    return widget.favorite.value == true
-                        ? const Icon(
-                            Icons.favorite,
-                            color: AppColors.red,
-                          )
-                        : const Icon(Icons.favorite_border);
-                  }))
-                ],
+              ListTile(
+                contentPadding: const EdgeInsets.all(0),
+                title: customHeading(widget.title),
+                trailing: IconButton(onPressed: () {
+                  widget.favorite.value = !widget.favorite.value;
+                }, icon: Obx(() {
+                  return widget.favorite.value == true
+                      ? const Icon(
+                          Icons.bookmark,
+                          color: AppColors.primary,
+                        )
+                      : const Icon(
+                          Icons.bookmark_add_outlined,
+                          color: AppColors.grey,
+                        );
+                })),
               ),
               Image.asset(
                 widget.img,

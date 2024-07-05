@@ -19,30 +19,27 @@ class InputFormFieldApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          customHeading(label),
-          const SizedBox(
-            height: 5,
-          ),
-          TextFormField(
-            controller: controller,
-            keyboardType: inputType,
-            decoration: InputDecoration(
-              hintText: hint,
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-              ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        customHeading(label),
+        const SizedBox(
+          height: 5,
+        ),
+        TextFormField(
+          controller: controller,
+          keyboardType: inputType,
+          decoration: InputDecoration(
+            hintText: hint,
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
-            maxLines: null,
-            minLines: 1,
-            validator: validator,
           ),
-        ],
-      ),
+          maxLines: null,
+          minLines: 1,
+          validator: validator,
+        ),
+      ],
     );
   }
 }

@@ -5,8 +5,13 @@ class AddWidgetState {
   TextEditingController widgetImage = TextEditingController();
   TextEditingController widgetTitle = TextEditingController();
   TextEditingController widgetCode = TextEditingController();
+  String? selectedTechonology;
+  String? selectedCollection;
+
   addWidget() {
-    debugPrint('\nWidget Added');
+
+    debugPrint(selectedTechonology);
+    debugPrint(selectedCollection);
     debugPrint(widgetImage.toString());
     debugPrint(widgetTitle.text);
     debugPrint(widgetCode.text);

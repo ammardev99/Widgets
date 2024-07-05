@@ -34,9 +34,9 @@ class ComponentsPage extends StatelessWidget {
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: collection.length,
+                itemCount: widgets.length,
                 itemBuilder: (BuildContext context, int index) =>
-                    componentCard(collection[index],myTechonology[Get.arguments].color,RouteName.widgetsInfo),
+                    componentCard(widgets[index],myTechonology[Get.arguments].color,RouteName.widgetsInfo),
               ),
             ],
           ),

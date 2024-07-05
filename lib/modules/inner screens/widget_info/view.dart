@@ -23,18 +23,21 @@ class WidgetInfoPage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             leading: backPop(),
-            title: customHeading(collection[Get.arguments].title),
+            title: customHeading(widgets[Get.arguments].title),
             actions: [
               IconButton(onPressed: () {
-                collection[Get.arguments].favorite.value =
-                    !collection[Get.arguments].favorite.value;
+                widgets[Get.arguments].favorite.value =
+                    !widgets[Get.arguments].favorite.value;
               }, icon: Obx(() {
-                return collection[Get.arguments].favorite.value == true
+                return widgets[Get.arguments].favorite.value == true
                     ? const Icon(
-                        Icons.favorite,
-                        color: AppColors.red,
+                        Icons.bookmark,
+                        color: AppColors.primary,
                       )
-                    : const Icon(Icons.favorite_border);
+                    : const Icon(
+                        Icons.bookmark_add_outlined,
+                        color: AppColors.grey,
+                      );
               })),
               sizeBox(5),
             ],
@@ -60,19 +63,20 @@ class WidgetInfoPage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               children: [
                 Image(
-                  image: AssetImage(collection[Get.arguments].img),
+                  image: AssetImage(widgets[Get.arguments].img),
                   fit: BoxFit.contain,
                 ),
                 SingleChildScrollView(
-                    child:
-                        customInfo(collection[Get.arguments].code.toString())),
+                    child: SelectableText(
+                  widgets[Get.arguments].code,
+                )),
               ],
             ),
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              copyIt(collection[Get.arguments].code);
-              showSnackBar("Copy", collection[Get.arguments].title);
+              copyIt(widgets[Get.arguments].code);
+              showSnackBar("Copy", widgets[Get.arguments].title);
             },
             backgroundColor: AppColors.primary,
             child: const Icon(

@@ -16,6 +16,7 @@ Widget profileCard(String img, String user, String email) {
             ),
             sizeBox(15),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 customHeading(user),
                 sizeBox(0, 5),
