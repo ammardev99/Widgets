@@ -34,9 +34,9 @@ Widget componentCard(MyWidget widget, Color color, [String? widgetsInfo]) {
                   widget.favorite.value = !widget.favorite.value;
                 }, icon: Obx(() {
                   return widget.favorite.value == true
-                      ? const Icon(
+                      ? Icon(
                           Icons.bookmark,
-                          color: AppColors.primary,
+                          color: color,
                         )
                       : const Icon(
                           Icons.bookmark_add_outlined,

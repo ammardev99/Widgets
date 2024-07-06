@@ -38,19 +38,19 @@ class SignupPage extends StatelessWidget {
               ),
               sizeBox(20),
               customTitle('Sign up'),
-              sizeBox(5),
+              sizeBox(10),
               InputFormFieldApp(
                   label: 'Name',
                   hint: 'Enter your full name',
                   controller: state.userFullName!,
                   inputType: TextInputType.name),
-              sizeBox(5),
+              sizeBox(15),
               InputFormFieldApp(
                   label: 'Email',
                   hint: 'Enter your email',
                   controller: state.userEmail!,
                   inputType: TextInputType.emailAddress),
-              sizeBox(5),
+              sizeBox(15),
               InputFormFieldApp(
                   label: 'Password',
                   hint: 'Enter your password',
@@ -68,8 +68,9 @@ class SignupPage extends StatelessWidget {
                     showSnackBar('Open App', 'message');
                   },
                   child: customHeading("Sign up", AppColors.white)),
-              sizeBox(40),
-              actionText('Already have an account?', 'Login', RouteName.login)
+              sizeBox(30),
+              actionText('Already have an account?', 'Login', RouteName.login),
+              sizeBox(30)
             ],
           ),
         ),

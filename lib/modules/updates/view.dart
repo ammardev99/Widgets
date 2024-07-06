@@ -44,10 +44,12 @@ class UpdatesPage extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 5),
-              child: feedCard(widgets[index], myTechonology[index].color,
+              child: feedCard(context,widgets[index], myTechonology[index].color,
+
                   RouteName.widgetsInfo),
             ),
           )),
     );
   }
 }
+

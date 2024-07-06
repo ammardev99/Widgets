@@ -33,13 +33,12 @@ class FavoritePage extends StatelessWidget {
               return ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount:
-                    widgets.where((item) => item.favorite.value).length,
+                itemCount: widgets.where((item) => item.favorite.value).length,
                 itemBuilder: (BuildContext context, int index) {
                   var filteredCollection =
                       widgets.where((item) => item.favorite.value).toList();
                   return componentCard(filteredCollection[index],
-                      AppColors.light, RouteName.widgetsInfo);
+                      AppColors.primary, RouteName.widgetsInfo);
                 },
               );
             })

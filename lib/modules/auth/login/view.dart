@@ -33,13 +33,13 @@ class LoginPage extends StatelessWidget {
               ),
               sizeBox(20),
               customTitle('Login'),
-              sizeBox(5),
+              sizeBox(10),
               InputFormFieldApp(
                   label: 'Email',
                   hint: 'Enter your email',
                   controller: state.userEmail!,
                   inputType: TextInputType.emailAddress),
-              sizeBox(5),
+              sizeBox(15),
               InputFormFieldApp(
                   label: 'Password',
                   hint: 'Enter your password',
@@ -56,8 +56,9 @@ class LoginPage extends StatelessWidget {
                     Get.toNamed(RouteName.signup);
                   },
                   child: customHeading("Sign in", AppColors.white)),
-              sizeBox(40),
+              sizeBox(30),
               actionText('Don’t have an  account?', 'Sign up', RouteName.signup),
+              sizeBox(30)
             ],
           ),
         ),
