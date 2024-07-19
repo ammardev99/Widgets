@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:widgets/modules/add%20data/add_collection/view.dart';
 import 'package:widgets/modules/add%20data/add_technology/view.dart';
-import 'package:widgets/modules/add%20data/add_widget/view.dart';
 import 'package:widgets/routes/routes_name.dart';
 import 'package:widgets/widgets/optioncard.dart';
 import 'package:widgets/widgets/profile.dart';
@@ -27,12 +25,9 @@ class MenuPage extends StatelessWidget {
             'User',
             'useremail@gmail.com',
           ),
-          optionPageCard(Icons.playlist_add_rounded, 'Add Widget', context,
-              AddWidgetPage()),
-          optionPageCard(Icons.add_box_outlined, 'Add Techonology', context,
-              AddTechnologyPage()),
-          optionPageCard(Icons.view_agenda_outlined, 'Create Collection',
-              context, AddCollectionPage()),
+          // optionPageCard(Icons.playlist_add_rounded, 'Add Widget', context,AddWidgetPage()),
+          optionPageCard(Icons.add_box_outlined, 'Add Techonology', context,AddTechnologyPage()),
+          // optionPageCard(Icons.view_agenda_outlined, 'Create Collection',context, AddCollectionPage()),
           optionCard(Icons.info_outline, 'About us', RouteName.aboutus),
           optionCard(Icons.message_outlined, 'Contact us', RouteName.contactus),
           optionCard(Icons.star_border, 'Rate App'),

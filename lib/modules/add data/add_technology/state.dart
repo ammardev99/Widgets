@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:widgets/widgets/show_snack_bar.dart';
+import 'package:get/get.dart';
 
 class AddTechnologyState {
+  TextEditingController techonologyTitle = TextEditingController();
+  TextEditingController techonologyColor = TextEditingController();
+  RxString technologyIcon = ''.obs;
 
-  TextEditingController widgetImage = TextEditingController();
-  TextEditingController widgetTitle = TextEditingController();
-  TextEditingController widgetCode = TextEditingController();
-  String? selectedTechonology;
-  String? selectedCollection;
-
-  addWidget() {
-
-    debugPrint(selectedTechonology);
-    debugPrint(selectedCollection);
-    debugPrint(widgetImage.toString());
-    debugPrint(widgetTitle.text);
-    debugPrint(widgetCode.text);
-    showSnackBar('added', widgetTitle.text);
+  printtechnology() {
+    debugPrint(techonologyTitle.text);
+    debugPrint(techonologyColor.text);
   }
-    AddTechnologyState() {
+
+  AddTechnologyState() {
     ///Initialize variables
   }
 }

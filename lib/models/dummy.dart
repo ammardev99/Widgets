@@ -77,6 +77,3 @@ final myCollection = [
   Mytechnology(id: 5,title: "Bottom", icon: "assets/png/app_icon.png", color: AppColors.black),
 ];
 
-
-
-
