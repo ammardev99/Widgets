@@ -7,7 +7,7 @@ class AddWidgetState {
   TextEditingController widgetTitle = TextEditingController();
   TextEditingController widgetCode = TextEditingController();
   TextEditingController widgetDescription = TextEditingController();
-  String? selectedTechonology;
+  String selectedTechonology = '';
   String? selectedCollection;
 
   AddWidgetState() {

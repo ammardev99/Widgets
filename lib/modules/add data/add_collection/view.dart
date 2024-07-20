@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:widgets/models/dummy.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/utilities/validators.dart';
-import 'package:widgets/widgets/dropdown_input_field.dart';
 import 'package:widgets/widgets/formating.dart';
 import 'package:widgets/widgets/input_form_field.dart';
+import 'package:widgets/widgets/technology_dropdown.dart';
 
 import 'logic.dart';
 
@@ -27,23 +26,9 @@ class AddCollectionPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               sizeBox(10),
-              DropdownFormFieldApp(
-                label: "Technology",
-                hint: "Select language",
-                items: [
-                  myTechonology[0].title.toString(),
-                  myTechonology[1].title.toString(),
-                  myTechonology[2].title.toString(),
-                  myTechonology[3].title.toString(),
-                  myTechonology[4].title.toString(),
-                  myTechonology[5].title.toString(),
-                ],
-                value: state.selectedTechonology,
-                onChanged: (value) {
-                  state.selectedTechonology = value;
-                },
-              ),
-              sizeBox(10),
+              TechnologyDropdown(onSelected: (value) {
+                state.selectedTechonology = value;
+              }),
               sizeBox(10),
               InputFormFieldApp(
                   label: "Collection",

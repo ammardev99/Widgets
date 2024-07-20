@@ -9,6 +9,7 @@ import 'package:widgets/widgets/back_icon_button.dart';
 import 'package:widgets/widgets/dropdown_input_field.dart';
 import 'package:widgets/widgets/formating.dart';
 import 'package:widgets/widgets/input_form_field.dart';
+import 'package:widgets/widgets/technology_dropdown.dart';
 
 import 'logic.dart';
 
@@ -36,22 +37,26 @@ class AddWidgetPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                DropdownFormFieldApp(
-                  label: "Technology",
-                  hint: "Select language",
-                  items: [
-                    myTechonology[0].title.toString(),
-                    myTechonology[1].title.toString(),
-                    myTechonology[2].title.toString(),
-                    myTechonology[3].title.toString(),
-                    myTechonology[4].title.toString(),
-                    myTechonology[5].title.toString(),
-                  ],
-                  value: state.selectedTechonology,
-                  onChanged: (value) {
-                    state.selectedTechonology = value;
-                  },
-                ),
+                TechnologyDropdown(onSelected: (value) {
+                  state.selectedTechonology = value;
+                }),
+
+                // DropdownFormFieldApp(
+                //   label: "Technology",
+                //   hint: "Select language",
+                //   items: [
+                //     myTechonology[0].title.toString(),
+                //     myTechonology[1].title.toString(),
+                //     myTechonology[2].title.toString(),
+                //     myTechonology[3].title.toString(),
+                //     myTechonology[4].title.toString(),
+                //     myTechonology[5].title.toString(),
+                //   ],
+                //   value: state.selectedTechonology,
+                //   onChanged: (value) {
+                //     state.selectedTechonology = value;
+                //   },
+                // ),
                 sizeBox(15),
                 DropdownFormFieldApp(
                   label: "Collection",
@@ -133,7 +138,8 @@ class AddWidgetPage extends StatelessWidget {
                       minimumSize:
                           WidgetStatePropertyAll(Size(double.infinity, 50)),
                       elevation: WidgetStatePropertyAll(1),
-                      backgroundColor: WidgetStatePropertyAll(AppColors.primary),
+                      backgroundColor:
+                          WidgetStatePropertyAll(AppColors.primary),
                     ),
                     child: customHeading('Add', AppColors.white)),
                 sizeBox(30)

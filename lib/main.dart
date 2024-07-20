@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:widgets/firebase_options.dart';
+import 'package:widgets/models/technologylogic.dart';
 import 'package:widgets/modules/auth/login/view.dart';
 import 'package:widgets/routes/routes.dart';
 import 'package:widgets/utilities/color.dart';
@@ -18,6 +19,7 @@ void main() async {
     statusBarColor: AppColors.primary,
     statusBarBrightness: Brightness.light,
   ));
+Get.put(TechnologyController());
   runApp(const MyApp());
 }
 
