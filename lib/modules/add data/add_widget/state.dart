@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:widgets/widgets/show_snack_bar.dart';
+import 'package:get/get.dart';
 
 class AddWidgetState {
+  RxString widgetImg = ''.obs;
   TextEditingController widgetImage = TextEditingController();
   TextEditingController widgetTitle = TextEditingController();
   TextEditingController widgetCode = TextEditingController();
+  TextEditingController widgetDescription = TextEditingController();
   String? selectedTechonology;
   String? selectedCollection;
-
-  addWidget() {
-
-    debugPrint(selectedTechonology);
-    debugPrint(selectedCollection);
-    debugPrint(widgetImage.toString());
-    debugPrint(widgetTitle.text);
-    debugPrint(widgetCode.text);
-    showSnackBar('added', widgetTitle.text);
-  }
 
   AddWidgetState() {
     ///Initialize variables

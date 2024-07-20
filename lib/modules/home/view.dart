@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                     return IconButton(
                         onPressed: () => logic.changeLayOut(),
                         icon: logic.layoutGrid.value == true
-                            ? Icon(Icons.view_list_rounded,
+                            ? Icon(Icons.view_agenda,
                                 color: AppColors.grey.withOpacity(0.6))
                             : Icon(Icons.grid_view_rounded,
                                 color: AppColors.grey.withOpacity(0.6)));

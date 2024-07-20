@@ -9,3 +9,14 @@ class AppColors {
   static const Color grey = Color(0xFFB2B2B2);
   static const Color red = Color(0xFFFF0000);
 }
+
+
+
+  // Function to convert hex string to Color
+  Color hexToColor(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF$hexColor";
+    }
+    return Color(int.parse(hexColor, radix: 16));
+  }

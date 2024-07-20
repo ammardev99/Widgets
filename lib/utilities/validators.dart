@@ -33,9 +33,9 @@ String? validateEmail(String? value) {
 }
 
 
-String? validateTechnologyTitle(String? value) {
+String? validateTitle(String? value) {
   if ((value ?? "").isEmpty) {
-    return 'Technology title is required';
+    return 'Title is required';
   }
   if (value!.length < 3) {
     return 'Title must be at least 3 characters long';
@@ -53,6 +53,14 @@ String? validateColorCode(String? value) {
   }
   if (!RegExp(r'^#FF[0-9A-Fa-f]{6}$').hasMatch(value!)) {
     return 'Color code must be in the format #FF******';
+  }
+  return null;
+}
+
+
+String? validateRequiredField(String? value) {
+  if ((value ?? "").isEmpty) {
+    return 'required';
   }
   return null;
 }
