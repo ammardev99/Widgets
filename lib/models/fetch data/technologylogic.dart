@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'technology_model.dart'; // Adjust the import path if necessary
+import '../technology_model.dart'; // Adjust the import path if necessary
 
 class TechnologyController extends GetxController {
   var technologyList = <Technology>[].obs;

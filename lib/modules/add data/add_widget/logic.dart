@@ -70,10 +70,11 @@ class AddWidgetLogic extends GetxController {
       debugPrint('widget added');
       showSnackBar('Message', 'added successfully');
       // Clear the fields
-      state.widgetImage.clear();
       state.widgetTitle.clear();
       state.widgetCode.clear();
       state.widgetDescription.clear();
+      state.widgetImg.value = '';
+
       update();
     } catch (error) {
       debugPrint('error');

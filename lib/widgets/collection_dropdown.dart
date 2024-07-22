@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:widgets/models/fetch_collection_logic.dart';
+import 'package:widgets/models/fetch%20data/fetch_collection_logic.dart';
 
 class CollectionDropdown extends StatefulWidget {
   final Function(String) onSelected;
@@ -42,31 +42,34 @@ class _CollectionDropdownState extends State<CollectionDropdown> {
         _selectedCollection = null;
       }
 
-      return DropdownButtonFormField<String>(
-        decoration: const InputDecoration(
-          // labelText: 'Select Collection',
-          border: OutlineInputBorder(),
-          errorBorder:OutlineInputBorder(),
-          enabledBorder: OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(),
+      return SizedBox(
+        width: double.infinity,
+        child: DropdownButtonFormField<String>(
+          decoration: const InputDecoration(
+            // labelText: 'Select Collection',
+            border: OutlineInputBorder(),
+            errorBorder:OutlineInputBorder(),
+            enabledBorder: OutlineInputBorder(),
+            focusedBorder: OutlineInputBorder(),
+          ),
+          hint: _selectedCollection == null ? const Text('Select Collection') : Text(_selectedCollection!),
+          onChanged: (value) {
+            setState(() {
+              _selectedCollection = value;
+            });
+            if (value != null) {
+              widget.onSelected(value);
+            }
+          },
+          value: _selectedCollection,
+          items: dropdownItems,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please select a collection';
+            }
+            return null;
+          },
         ),
-        hint: _selectedCollection == null ? const Text('Select Collection') : Text(_selectedCollection!),
-        onChanged: (value) {
-          setState(() {
-            _selectedCollection = value;
-          });
-          if (value != null) {
-            widget.onSelected(value);
-          }
-        },
-        value: _selectedCollection,
-        items: dropdownItems,
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Please select a collection';
-          }
-          return null;
-        },
       );
     });
   }

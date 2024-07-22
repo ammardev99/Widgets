@@ -2,8 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:widgets/modules/add%20data/add_collection/view.dart';
+import 'package:widgets/modules/add%20data/add_technology/view.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/utilities/validators.dart';
+import 'package:widgets/widgets/add_button_dialog.dart';
 import 'package:widgets/widgets/back_icon_button.dart';
 import 'package:widgets/widgets/collection_dropdown.dart';
 import 'package:widgets/widgets/formating.dart';
@@ -22,8 +25,9 @@ class AddWidgetPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: backPop(),
-          title: customHeading('New Widget'),
+          backgroundColor: AppColors.primary,
+          leading: backPop(AppColors.white),
+          title: customHeading('New Widget', AppColors.white),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -38,16 +42,34 @@ class AddWidgetPage extends StatelessWidget {
                 sizeBox(10),
                 customHeading('Select Technology'),
                 sizeBox(5),
-                TechnologyDropdown(onSelected: (value) {
-                  state.selectedTechonology = value;
-                }),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: TechnologyDropdown(onSelected: (value) {
+                        state.selectedTechonology = value;
+                      }),
+                    ),
+                    sizeBox(5),
+                    addButtonDialog(context, AddTechnologyPage())
+                  ],
+                ),
                 sizeBox(10),
                 customHeading('Select Collection'),
                 sizeBox(5),
-                CollectionDropdown(
-                  onSelected: (value) {
-                    state.selectedCollection = value;
-                  },
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: CollectionDropdown(
+                        onSelected: (value) {
+                          state.selectedCollection = value;
+                        },
+                      ),
+                    ),
+                    sizeBox(5),
+                    addButtonDialog(context, AddCollectionPage())
+                  ],
                 ),
                 sizeBox(10),
                 InputFormFieldApp(

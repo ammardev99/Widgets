@@ -1,57 +1,59 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:widgets/utilities/color.dart';
+import 'package:widgets/models/fetch%20data/fetch_widgets.dart';
+import 'package:widgets/models/widget_model.dart';
+import 'package:widgets/widgets/component_cart.dart';
 
-class TechnologyData extends StatefulWidget {
-  const TechnologyData({super.key});
+class WidgetsData extends StatefulWidget {
+  const WidgetsData({super.key});
 
   @override
-  State<TechnologyData> createState() => _TechnologyDataState();
+  State<WidgetsData> createState() => _WidgetsDataState();
 }
 
-class _TechnologyDataState extends State<TechnologyData> {
-  // String myColor = '0xFF1D2F4A';
-  //                 textColor: Color(myColor),
+class _WidgetsDataState extends State<WidgetsData> {
+  late Future<List<WidgetModel>> _fetchWidgetsFuture;
 
   @override
+  void initState() {
+    super.initState();
+    _fetchWidgetsFuture = fetchWidgets(); // Fetch widgets on initialization
+  }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Technology List'),
+        title: const Text('Widgets List'),
         centerTitle: true,
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('technology').snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return const Center(child: Text('No technologies found'));
-          }
-          List<DocumentSnapshot> docs = snapshot.data!.docs;
-          return ListView.builder(
-            itemCount: docs.length,
-            itemBuilder: (context, index) {
-              var data = docs[index].data() as Map<String, dynamic>;
-              return ListTile(
-                textColor: hexToColor(data['color']),
-                splashColor: AppColors.splashColor,
-                hoverColor: const Color(0xFFDA3939),
-                leading: Image.network(data['icon'], width: 40, height: 40),
-                title: Text(data['title']),
-                subtitle: Text('Color: ${data['color']}'),
-                onTap: () {},
-              );
-            },
-          );
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: FutureBuilder<List<WidgetModel>>(
+          future: _fetchWidgetsFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            }
+            if (!snapshot.hasData || snapshot.data!.isEmpty) {
+              return const Center(child: Text('No widgets found'));
+            }
+
+            List<WidgetModel> widgets = snapshot.data!;
+
+            return ListView.builder(
+              itemCount: widgets.length,
+              itemBuilder: (context, index) {
+                final widget = widgets[index];
+                return showWidgetCard(widget.title, widget.image, widget.code,
+                    widget.description);
+              },
+            );
+          },
+        ),
       ),
     );
   }
-
 }
