@@ -2,11 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:widgets/models/dummy.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/utilities/validators.dart';
 import 'package:widgets/widgets/back_icon_button.dart';
-import 'package:widgets/widgets/dropdown_input_field.dart';
+import 'package:widgets/widgets/collection_dropdown.dart';
 import 'package:widgets/widgets/formating.dart';
 import 'package:widgets/widgets/input_form_field.dart';
 import 'package:widgets/widgets/technology_dropdown.dart';
@@ -18,7 +17,6 @@ class AddWidgetPage extends StatelessWidget {
 
   final logic = Get.put(AddWidgetLogic());
   final state = Get.find<AddWidgetLogic>().state;
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,44 +35,21 @@ class AddWidgetPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                sizeBox(10),
+                customHeading('Select Technology'),
+                sizeBox(5),
                 TechnologyDropdown(onSelected: (value) {
                   state.selectedTechonology = value;
                 }),
-
-                // DropdownFormFieldApp(
-                //   label: "Technology",
-                //   hint: "Select language",
-                //   items: [
-                //     myTechonology[0].title.toString(),
-                //     myTechonology[1].title.toString(),
-                //     myTechonology[2].title.toString(),
-                //     myTechonology[3].title.toString(),
-                //     myTechonology[4].title.toString(),
-                //     myTechonology[5].title.toString(),
-                //   ],
-                //   value: state.selectedTechonology,
-                //   onChanged: (value) {
-                //     state.selectedTechonology = value;
-                //   },
-                // ),
-                sizeBox(15),
-                DropdownFormFieldApp(
-                  label: "Collection",
-                  hint: "Select category",
-                  items: [
-                    myCollection[0].title,
-                    myCollection[1].title,
-                    myCollection[2].title,
-                    myCollection[3].title,
-                    myCollection[4].title,
-                    myCollection[5].title,
-                  ],
-                  value: state.selectedCollection,
-                  onChanged: (value) {
+                sizeBox(10),
+                customHeading('Select Collection'),
+                sizeBox(5),
+                CollectionDropdown(
+                  onSelected: (value) {
                     state.selectedCollection = value;
                   },
                 ),
-                sizeBox(15),
+                sizeBox(10),
                 InputFormFieldApp(
                   label: "Title",
                   hint: 'Enter widget name',
@@ -98,7 +73,7 @@ class AddWidgetPage extends StatelessWidget {
                   inputType: TextInputType.text,
                   validator: validateRequiredField,
                 ),
-                sizeBox(15),
+                sizeBox(10),
                 customHeading("UI Image"),
                 sizeBox(10),
                 Center(
@@ -126,22 +101,30 @@ class AddWidgetPage extends StatelessWidget {
                   ),
                 ),
                 sizeBox(30),
-                ElevatedButton(
-                    onPressed: () async {
-                      if (logic.formKey.currentState!.validate()) {
-                        await logic.addNewWidget();
-                        // ignore: use_build_context_synchronously
-                        Navigator.pop(context);
-                      }
-                    },
-                    style: const ButtonStyle(
-                      minimumSize:
-                          WidgetStatePropertyAll(Size(double.infinity, 50)),
-                      elevation: WidgetStatePropertyAll(1),
-                      backgroundColor:
-                          WidgetStatePropertyAll(AppColors.primary),
-                    ),
-                    child: customHeading('Add', AppColors.white)),
+                Obx(() {
+                  if (logic.isLoading.value) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else {
+                    return ElevatedButton(
+                        onPressed: () async {
+                          if (logic.formKey.currentState!.validate()) {
+                            await logic.addNewWidget(
+                              state.widgetImg.value,
+                            );
+                            // ignore: use_build_context_synchronously
+                            Navigator.pop(context);
+                          }
+                        },
+                        style: const ButtonStyle(
+                          minimumSize:
+                              WidgetStatePropertyAll(Size(double.infinity, 50)),
+                          elevation: WidgetStatePropertyAll(1),
+                          backgroundColor:
+                              WidgetStatePropertyAll(AppColors.primary),
+                        ),
+                        child: customHeading('Add', AppColors.white));
+                  }
+                }),
                 sizeBox(30)
               ],
             ),

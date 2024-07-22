@@ -23,9 +23,7 @@ class InputFormFieldApp extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         customHeading(label),
-        const SizedBox(
-          height: 5,
-        ),
+        sizeBox(5),
         TextFormField(
           controller: controller,
           keyboardType: inputType,

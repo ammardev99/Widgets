@@ -13,8 +13,7 @@ class TechnologyDropdown extends StatefulWidget {
 }
 
 class _TechnologyDropdownState extends State<TechnologyDropdown> {
-  final TechnologyController logic =
-      Get.find<TechnologyController>(); // Retrieve the controller
+  final TechnologyController logic = Get.find<TechnologyController>(); // Retrieve the controller
   String? _selectedTechnology; // To hold the selected technology
 
   @override
@@ -33,8 +32,7 @@ class _TechnologyDropdownState extends State<TechnologyDropdown> {
         return const Center(child: CircularProgressIndicator());
       }
 
-      List<DropdownMenuItem<String>> dropdownItems =
-          logic.technologyList.map((tech) {
+      List<DropdownMenuItem<String>> dropdownItems = logic.technologyList.map((tech) {
         return DropdownMenuItem<String>(
           value: tech.title,
           child: Text(tech.title),
@@ -42,27 +40,35 @@ class _TechnologyDropdownState extends State<TechnologyDropdown> {
       }).toList();
 
       // Ensure the selected value is in the list of items
-      if (_selectedTechnology != null &&
-          !logic.technologyList
-              .any((tech) => tech.title == _selectedTechnology)) {
+      if (_selectedTechnology != null && !logic.technologyList.any((tech) => tech.title == _selectedTechnology)) {
         _selectedTechnology = null;
       }
 
-      return DropdownButton<String>(
-        hint: _selectedTechnology == null
-            ? const Text('Select Technology')
-            : Text(_selectedTechnology!), // Show selected value as label
+      return DropdownButtonFormField<String>(
+        decoration: const InputDecoration(
+          // labelText: 'Select Technology',
+          border: OutlineInputBorder(),
+          errorBorder:OutlineInputBorder(),
+          enabledBorder: OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(),
+        ),
+        hint: _selectedTechnology == null ? const Text('Select Technology') : Text(_selectedTechnology!),
         onChanged: (value) {
           setState(() {
             _selectedTechnology = value; // Update the selected value
           });
           if (value != null) {
-            widget
-                .onSelected(value); // Call the callback with the selected value
+            widget.onSelected(value); // Call the callback with the selected value
           }
         },
         value: _selectedTechnology, // Set the selected value
         items: dropdownItems,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please select a technology';
+          }
+          return null;
+        },
       );
     });
   }

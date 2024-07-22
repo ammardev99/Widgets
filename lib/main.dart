@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:widgets/firebase_options.dart';
+import 'package:widgets/models/fetch_collection_logic.dart';
 import 'package:widgets/models/technologylogic.dart';
 import 'package:widgets/modules/auth/login/view.dart';
 import 'package:widgets/routes/routes.dart';
@@ -20,6 +21,7 @@ void main() async {
     statusBarBrightness: Brightness.light,
   ));
 Get.put(TechnologyController());
+Get.put(CollectionController());
   runApp(const MyApp());
 }
 

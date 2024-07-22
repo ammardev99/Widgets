@@ -11,9 +11,11 @@ class AddCollectionLogic extends GetxController {
   final AddCollectionState state = AddCollectionState();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   get formKey => _formKey;
+  RxBool isLoading = false.obs;
 
   Future addNewCollection() async {
-    final fireStore = FirebaseFirestore.instance.collection('collection');
+    isLoading.value = true;
+    final fireStore = FirebaseFirestore.instance.collection('collections');
     String id = DateTime.now().millisecondsSinceEpoch.toString();
     try {
       await fireStore.doc(id).set({
@@ -34,5 +36,6 @@ class AddCollectionLogic extends GetxController {
     } finally {
       update();
     }
+    isLoading.value = false;
   }
 }

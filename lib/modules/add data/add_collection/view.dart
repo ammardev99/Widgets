@@ -38,21 +38,28 @@ class AddCollectionPage extends StatelessWidget {
                   validator: validateTitle),
               sizeBox(10),
               sizeBox(15),
-              ElevatedButton(
-                  onPressed: () async {
-                    if (logic.formKey.currentState!.validate()) {
-                      await logic.addNewCollection();
-                      // ignore: use_build_context_synchronously
-                      Navigator.pop(context);
-                    }
-                  },
-                  style: const ButtonStyle(
-                    minimumSize:
-                        WidgetStatePropertyAll(Size(double.infinity, 50)),
-                    elevation: WidgetStatePropertyAll(1),
-                    backgroundColor: WidgetStatePropertyAll(AppColors.primary),
-                  ),
-                  child: customHeading('Add', AppColors.white)),
+              Obx(() {
+                if (logic.isLoading.value) {
+                  return const Center(child: CircularProgressIndicator());
+                } else {
+                  return ElevatedButton(
+                      onPressed: () async {
+                        if (logic.formKey.currentState!.validate()) {
+                          await logic.addNewCollection();
+                          // ignore: use_build_context_synchronously
+                          Navigator.pop(context);
+                        }
+                      },
+                      style: const ButtonStyle(
+                        minimumSize:
+                            WidgetStatePropertyAll(Size(double.infinity, 50)),
+                        elevation: WidgetStatePropertyAll(1),
+                        backgroundColor:
+                            WidgetStatePropertyAll(AppColors.primary),
+                      ),
+                      child: customHeading('Add', AppColors.white));
+                }
+              }),
             ],
           ),
         ),
