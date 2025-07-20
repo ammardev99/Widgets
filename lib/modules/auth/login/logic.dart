@@ -12,13 +12,16 @@ class LoginLogic extends GetxController {
   final LoginState state = LoginState();
   FirebaseAuth auth = FirebaseAuth.instance;
   bool dataloading = false;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   get formKey => _formKey;
-  void login() {
+  Future<void> login() async {
     if (!formKey.currentState!.validate()) {
       return;
     }
+    state.isLoading.value = true;
+    await Future.delayed(const Duration(seconds: 1));
     dataloading = true;
     update();
     auth
@@ -27,7 +30,6 @@ class LoginLogic extends GetxController {
             password: state.userPassword!.text.toString())
         .then((value) {
       dataloading = false;
-
       showSnackBar('Message', 'Login Successful!');
       update();
       Get.offAllNamed(RouteName.widgetApp);
@@ -36,12 +38,12 @@ class LoginLogic extends GetxController {
       update();
     }).onError((error, stackTrace) {
       // Utils().toastMessage(error.toString());
-      showSnackBar('Message', 'Server Error');
+      showSnackBar('Message', 'not match');
       log(error.toString());
       update();
       dataloading = false;
       update();
     });
-    showSnackBar('App', 'Wellcom');
+    state.isLoading.value = false;
   }
 }

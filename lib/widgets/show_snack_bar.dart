@@ -10,7 +10,7 @@ void showSnackBar(String title, String message) {
     titleText: customHeading(title),
     messageText: customInfo(message, AppColors.white),
     colorText: AppColors.white,
-    backgroundColor: AppColors.primary,
+    backgroundColor: AppColors.primary.withOpacity(0.5),
     snackPosition: SnackPosition.TOP,
     padding: const EdgeInsets.all(10),
     margin: const EdgeInsets.all(10),

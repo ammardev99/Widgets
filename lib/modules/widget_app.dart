@@ -22,13 +22,10 @@ class _WidgetAppState extends State<WidgetApp> {
   /// Controller to handle bottom nav bar and also handles initial page
   final NotchBottomBarController _controller =
       NotchBottomBarController(index: 0);
-
   int maxCount = 5;
-
   @override
   void dispose() {
     _pageController.dispose();
-
     super.dispose();
   }
 
@@ -57,9 +54,9 @@ class _WidgetAppState extends State<WidgetApp> {
                 kBottomRadius: 0,
                 removeMargins: true,
                 showShadow: true,
+                showLabel: false,
                 shadowElevation: 0.3,
                 durationInMilliSeconds: 300,
-                showLabel: false,
                 itemLabelStyle: const TextStyle(fontSize: 10),
                 bottomBarItems: const [
                   BottomBarItem(

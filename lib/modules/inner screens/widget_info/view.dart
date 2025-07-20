@@ -18,7 +18,7 @@ class WidgetInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 4,
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
@@ -45,6 +45,7 @@ class WidgetInfoPage extends StatelessWidget {
               indicatorColor: AppColors.primary,
               dividerColor: AppColors.grey,
               labelColor: AppColors.primary,
+              physics: BouncingScrollPhysics(),
               tabs: [
                 Tab(
                   text: 'Image',
@@ -52,6 +53,14 @@ class WidgetInfoPage extends StatelessWidget {
                 ),
                 Tab(
                   text: 'Code',
+                  // icon: Icon(Icons.code),
+                ),
+                Tab(
+                  text: 'Info',
+                  // icon: Icon(Icons.image),
+                ),
+                Tab(
+                  text: 'Help',
                   // icon: Icon(Icons.code),
                 ),
               ],
@@ -70,6 +79,8 @@ class WidgetInfoPage extends StatelessWidget {
                     child: SelectableText(
                   widgets[Get.arguments].code,
                 )),
+                const Text("Code Description"),
+                const Text("Community Messages"),
               ],
             ),
           ),

@@ -42,8 +42,10 @@ class HomePage extends StatelessWidget {
               ),
               sizeBox(3),
               Obx(() {
-                return logic.layoutGrid.value == true
-                    ? GridView.builder(
+                return
+                logic.layoutGrid.value == true
+                    ?
+                    GridView.builder(
                         itemCount: myTechonology.length,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),

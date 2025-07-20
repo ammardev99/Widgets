@@ -5,6 +5,7 @@ import 'package:widgets/routes/routes_name.dart';
 import 'package:widgets/utilities/color.dart';
 import 'package:widgets/utilities/validators.dart';
 import 'package:widgets/widgets/back_icon_button.dart';
+import 'package:widgets/widgets/loading_circle.dart';
 import 'package:widgets/widgets/formating.dart';
 import 'package:widgets/widgets/input_form_field.dart';
 
@@ -64,18 +65,23 @@ class SignupPage extends StatelessWidget {
                   validator: validatePassword6digit,
                 ),
                 sizeBox(30),
-                ElevatedButton(
-                    style: const ButtonStyle(
-                        backgroundColor:
-                            WidgetStatePropertyAll(AppColors.primary),
-                        minimumSize:
-                            WidgetStatePropertyAll(Size(double.infinity, 50))),
-                    onPressed: () {
-                      logic.signup();
-                    },
-                    child: customHeading("Sign up", AppColors.white)),
+                Obx(() {
+                  return ElevatedButton(
+                      style: const ButtonStyle(
+                          backgroundColor:
+                              WidgetStatePropertyAll(AppColors.primary),
+                          minimumSize: WidgetStatePropertyAll(
+                              Size(double.infinity, 50))),
+                      onPressed: () {
+                        logic.signup();
+                      },
+                      child: state.isLoading.value == true
+                          ? loadingCircle(25)
+                          : customHeading("Sign up", AppColors.white));
+                }),
                 sizeBox(30),
-                actionText('Already have an account?', 'Login', RouteName.login),
+                actionText(
+                    'Already have an account?', 'Login', RouteName.login),
                 sizeBox(30)
               ],
             ),

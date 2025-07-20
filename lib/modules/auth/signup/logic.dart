@@ -14,10 +14,12 @@ class SignupLogic extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   get formKey => _formKey;
-  void signup() {
+  Future<void> signup() async {
     if (!formKey.currentState!.validate()) {
       return;
     }
+    state.isLoading.value = true;
+    await Future.delayed(const Duration(seconds: 1));
     dataloading = true;
     update();
     auth
@@ -26,6 +28,7 @@ class SignupLogic extends GetxController {
             password: state.userPassword!.text.toString())
         .then((value) {
       dataloading = false;
+      state.isLoading.value = false;
       showSnackBar('Message', 'Account Create Successful!');
       Get.offAll(() => LoginPage());
       update();
@@ -33,10 +36,9 @@ class SignupLogic extends GetxController {
       showSnackBar('Message', 'Server Error');
       log(error.toString());
       // Utils().toastMessage(error = error.toString());
-
       dataloading = false;
       update();
     });
-    showSnackBar('Sign Up', 'message');
+    state.isLoading.value = false;
   }
 }
